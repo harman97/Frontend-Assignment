@@ -49,6 +49,8 @@ export class AppComponent {
   selectCity(count){
     var geocoder =  new google.maps.Geocoder();
     // this.myMap(30.9661, 76.5231);
+
+    let me = this;
     geocoder.geocode( { 'address': this.cities[count] }, function(results, status) {
       console.log("Result:", results[0].formatted_address);
       if (status == google.maps.GeocoderStatus.OK) {
@@ -57,14 +59,14 @@ export class AppComponent {
           this._latitude = results[0].geometry.location.lat();
           this._longitude = results[0].geometry.location.lng();
           console.log(this._latitude , this._longitude);
-          // this.myMap(this._latitude, this._longitude);
+          me.myMap(this._latitude, this._longitude);
           
       } else {
         alert("Something got wrong " + status);
       }
     }); 
-    this.myMap(this.cities[count], this.cities[count]);
-    this.myMap(30.9661, 76.5231);
+    // this.myMap(this.cities[count], this.cities[count]);
+    // this.myMap(30.9661, 76.5231);
   }
 
    
